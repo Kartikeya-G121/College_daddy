@@ -1,23 +1,20 @@
-"""
-Flask application for College Daddy Notes Admin Panel.
-
-- Provides REST API endpoints for uploading, organizing, and serving notes (PDFs) for different semesters, branches, and subjects.
-- The /api/admin/upload endpoint allows admin users to upload new notes, which are saved to the filesystem and registered in notes-data.json.
-- Supports secure file uploads, metadata management, and download endpoints for notes.
-- Serves static assets and data for the frontend notes management/admin panel.
-"""
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, render_template
 from flask_cors import CORS
 import os
 import json
 from werkzeug.utils import secure_filename
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='assets', template_folder='pages')
 CORS(app)
 
 UPLOAD_ROOT = 'data/notes'
 NOTES_JSON = 'data/notes-data.json'
+
+@app.route('/')
+def home():
+    """Serve homepage (index.html)"""
+    return send_from_directory('.', 'index.html')
 
 @app.route('/api/admin/upload', methods=['POST'])
 def admin_upload():
@@ -93,4 +90,4 @@ def serve_data(filename):
     return send_from_directory('data', filename)
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(debug=True)

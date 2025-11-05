@@ -248,7 +248,7 @@ body {
 
 .glass-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(74, 111, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(155, 212, 221, 0.4), 0 0 30px rgba(88, 112, 208, 0.2);
 }
 
 /*** Main Container ***/
@@ -453,8 +453,7 @@ body {
 }
 
 .calculate-btn:hover .btn-background {
-    background: linear-gradient(135deg, #00b8ff, #00ff88, #00b8ff);
-    filter: brightness(1.2);
+    background: linear-gradient(135deg, #3583a2, #5ba5c8, #00b8ff);
 }
 
 .calculate-btn:hover {
